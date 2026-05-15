@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>StageIn — Website Event & Production Sekolah</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================
+       RESET
+    ========================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#0f0f0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    nav{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:20px 8%;
+      position:fixed;
+      top:0;
+      left:0;
+
+      background:rgba(0,0,0,0.8);
+      backdrop-filter:blur(10px);
+
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:orange;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+    }
+
+    .nav-links a{
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .nav-links a:hover{
+      color:orange;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero{
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+
+      padding:120px 10%;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:60px;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#ddd;
+      margin-bottom:35px;
+    }
+
+    .hero button{
+      padding:15px 35px;
+      border:none;
+      border-radius:10px;
+
+      background:orange;
+      color:black;
+
+      font-size:16px;
+      font-weight:600;
+
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero button:hover{
+      transform:translateY(-5px);
+      background:white;
+    }
+
+    /* =========================
+       SECTION TITLE
+    ========================== */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:40px;
+      color:orange;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#bbb;
+    }
+
+    /* =========================
+       SERVICES
+    ========================== */
+
+    .services{
+      padding:100px 8%;
+      background:#151515;
+    }
+
+    .service-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#1d1d1d;
+      padding:40px 30px;
+
+      border-radius:20px;
+
+      transition:0.4s;
+      border:1px solid transparent;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:orange;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:orange;
+      font-size:24px;
+    }
+
+    .card p{
+      color:#ccc;
+      line-height:1.7;
+    }
+
+    .icon{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about{
+      padding:100px 8%;
+      text-align:center;
+    }
+
+    .about-content{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .about h2{
+      color:orange;
+      font-size:40px;
+      margin-bottom:25px;
+    }
+
+    .about p{
+      line-height:1.9;
+      color:#ccc;
+      margin-bottom:20px;
+    }
+
+    .creator{
+      margin-top:30px;
+      padding:20px;
+
+      background:#1b1b1b;
+      border-radius:15px;
+      display:inline-block;
+    }
+
+    /* =========================
+       FUTURE DEVELOPMENT
+    ========================== */
+
+    .future{
+      padding:100px 8%;
+      background:#151515;
+    }
+
+    .future-list{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .future-item{
+      background:#1f1f1f;
+      padding:20px;
+      margin-bottom:20px;
+
+      border-left:5px solid orange;
+      border-radius:10px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    footer p{
+      color:#aaa;
+      margin:8px 0;
+    }
+
+    .socials{
+      margin-top:15px;
+    }
+
+    .socials a{
+      margin:0 10px;
+      color:orange;
+      transition:0.3s;
+    }
+
+    .socials a:hover{
+      color:white;
+    }
+
+    /* =========================
+       ANIMATION
+    ========================== */
+
+    .fade{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1s;
+    }
+
+    .fade.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .nav-links{
+        gap:15px;
+      }
+
+      .hero h1{
+        font-size:40px;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .section-title h2,
+      .about h2{
+        font-size:32px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <nav>
+
+    <div class="logo">
+      StageIn
+    </div>
+
+    <div class="nav-links">
+      <a href="#home">Beranda</a>
+      <a href="#services">Layanan</a>
+      <a href="#about">Tentang</a>
+      <a href="#future">Future</a>
+    </div>
+
+  </nav>
+
+  <!-- =========================
+       HERO SECTION
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content fade">
+
+      <h1>
+        Pusat Informasi Event & Produksi Sekolah
+      </h1>
+
+      <p>
+        Semua informasi event sekolah dalam satu tempat
+        yang modern, cepat, dan mudah diakses.
+      </p>
+
+      <button>
+        Lihat Event
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SERVICES
+  ========================== -->
+
+  <section class="services" id="services">
+
+    <div class="section-title fade">
+
+      <h2>Layanan StageIn</h2>
+
+      <p>
+        Platform informasi event dan produksi sekolah
+      </p>
+
+    </div>
+
+    <div class="service-container">
+
+      <div class="card fade">
+
+        <div class="icon">🎫</div>
+
+        <h3>Informasi Event</h3>
+
+        <p>
+          Menyediakan jadwal event sekolah, pentas seni,
+          pameran, dan kegiatan lainnya secara terpusat.
+        </p>
+
+      </div>
+
+      <div class="card fade">
+
+        <div class="icon">📸</div>
+
+        <h3>Dokumentasi Acara</h3>
+
+        <p>
+          Menyimpan dokumentasi foto dan video kegiatan
+          sekolah agar mudah diakses kembali.
+        </p>
+
+      </div>
+
+      <div class="card fade">
+
+        <div class="icon">🎭</div>
+
+        <h3>Produksi & Kepanitiaan</h3>
+
+        <p>
+          Membantu koordinasi panitia dan divisi produksi
+          agar komunikasi lebih efektif.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section class="about" id="about">
+
+    <div class="about-content fade">
+
+      <h2>Tentang StageIn</h2>
+
+      <p>
+        StageIn adalah website pusat informasi event dan
+        produksi sekolah yang dibuat untuk mempermudah
+        siswa dan panitia mendapatkan informasi acara
+        secara cepat dan terpusat.
+      </p>
+
+      <p>
+        Website ini dirancang dengan tampilan modern,
+        responsif, dan mudah digunakan untuk mendukung
+        kegiatan event sekolah yang lebih terorganisir.
+      </p>
+
+      <div class="creator">
+        <h3>Creator</h3>
+        <p>Tristan Alexander</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FUTURE DEVELOPMENT
+  ========================== -->
+
+  <section class="future" id="future">
+
+    <div class="section-title fade">
+
+      <h2>Future Development</h2>
+
+      <p>
+        Pengembangan StageIn di masa depan
+      </p>
+
+    </div>
+
+    <div class="future-list">
+
+      <div class="future-item fade">
+        🔐 Sistem Login Admin & Panitia
+      </div>
+
+      <div class="future-item fade">
+        📊 Dashboard Divisi Produksi
+      </div>
+
+      <div class="future-item fade">
+        🎤 Form Request Event
+      </div>
+
+      <div class="future-item fade">
+        🛠️ Sistem Peminjaman Alat
+      </div>
+
+      <div class="future-item fade">
+        📝 Kritik & Saran Digital
+      </div>
+
+      <div class="future-item fade">
+        🏅 Sertifikat Panitia Digital
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <h2 style="color:orange;">
+      StageIn
+    </h2>
+
+    <p>
+      Website Event & Production Sekolah
+    </p>
+
+    <p>
+      stagein@email.com
+    </p>
+
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+    </div>
+
+    <p style="margin-top:20px;">
+      © 2026 StageIn — All Rights Reserved
+    </p>
+
+  </footer>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    // =========================
+    // FADE ANIMATION
+    // =========================
+
+    const fadeElements = document.querySelectorAll('.fade');
+
+    const observer = new IntersectionObserver((entries)=>{
+
+      entries.forEach((entry)=>{
+
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+
+      });
+
+    });
+
+    fadeElements.forEach((el)=>{
+      observer.observe(el);
+    });
+
+  </script>
+
+</body>
+</html>
