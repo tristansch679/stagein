@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Sekolah - StageIn</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b00;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-menu a:hover {
+            color: #ff6b00;
+        }
+
+        .back-button {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #ff6b00;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #000000;
+            margin: 2rem 0 1rem 0;
+        }
+
+        /* ===== EVENT CARD ===== */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .event-card {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            color: #ffffff;
+        }
+
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ff6b00;
+        }
+
+        .event-date {
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+
+        .event-body {
+            padding: 1.5rem;
+        }
+
+        .event-info {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-info strong {
+            color: #ff6b00;
+            min-width: 80px;
+        }
+
+        .event-description {
+            color: #666666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .event-button {
+            background-color: #ff6b00;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .event-button:hover {
+            background-color: #e55a00;
+            transform: scale(1.02);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #1a1a1a;
+            color: #cccccc;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #333333;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 80px;
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <a href="../index.html" class="back-button">← Kembali</a>
+        <a href="../index.html" class="navbar-logo">StageIn</a>
+        <div style="width: 100px;"></div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        <h1>📅 Event Sekolah</h1>
+
+        <div class="events-grid">
+            <!-- Event 1 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-title">Pentas Seni 2025</div>
+                    <div class="event-date">📆 15 Juni 2025</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Waktu:</strong>
+                        <span>19:00 - 22:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lokasi:</strong>
+                        <span>Aula Sekolah</span>
+                    </div>
+                    <div class="event-description">
+                        Penampilan seni dari berbagai kelas dengan menampilkan tari, musik, dan drama. Menampilkan bakat-bakat terbaik siswa sekolah.
+                    </div>
+                    <a href="javascript:void(0)" class="event-button">Lihat Detail</a>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-title">Pameran Seni Rupa</div>
+                    <div class="event-date">📆 20 Juni 2025</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Waktu:</strong>
+                        <span>08:00 - 16:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lokasi:</strong>
+                        <span>Galeri Sekolah</span>
+                    </div>
+                    <div class="event-description">
+                        Pameran karya seni rupa siswa meliputi lukisan, patung, dan instalasi seni modern. Terbuka untuk umum.
+                    </div>
+                    <a href="javascript:void(0)" class="event-button">Lihat Detail</a>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-title">Kompetisi Olahraga</div>
+                    <div class="event-date">📆 25 Juni 2025</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Waktu:</strong>
+                        <span>07:00 - 17:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lokasi:</strong>
+                        <span>Lapangan Sekolah</span>
+                    </div>
+                    <div class="event-description">
+                        Kompetisi olahraga antar kelas dengan cabang olahraga basketball, futsal, dan badminton. Hadiah menarik menanti!
+                    </div>
+                    <a href="javascript:void(0)" class="event-button">Lihat Detail</a>
+                </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-title">Festival Kuliner</div>
+                    <div class="event-date">📆 28 Juni 2025</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Waktu:</strong>
+                        <span>10:00 - 18:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lokasi:</strong>
+                        <span>Halaman Depan</span>
+                    </div>
+                    <div class="event-description">
+                        Festival kuliner menampilkan berbagai makanan tradisional dan modern dari berbagai daerah. Buka untuk publik.
+                    </div>
+                    <a href="javascript:void(0)" class="event-button">Lihat Detail</a>
+                </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-title">Konser Musik</div>
+                    <div class="event-date">📆 02 Juli 2025</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Waktu:</strong>
+                        <span>18:00 - 21:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lokasi:</strong>
+                        <span>Aula Utama</span>
+                    </div>
+                    <div class="event-description">
+                        Konser musik live menampilkan band-band dari kalangan siswa dan alumni. Tiket terjual dengan membeli di panitia.
+                    </div>
+                    <a href="javascript:void(0)" class="event-button">Lihat Detail</a>
+                </div>
+            </div>
+
+            <!-- Event 6 -->
+            <div class="event-card">
+                <div class="event-header">
+                    <div class="event-title">Workshop & Seminar</div>
+                    <div class="event-date">📆 05 Juli 2025</div>
+                </div>
+                <div class="event-body">
+                    <div class="event-info">
+                        <strong>Waktu:</strong>
+                        <span>09:00 - 12:00 WIB</span>
+                    </div>
+                    <div class="event-info">
+                        <strong>Lokasi:</strong>
+                        <span>Ruang Serbaguna</span>
+                    </div>
+                    <div class="event-description">
+                        Workshop berbagai topik untuk mengembangkan skills siswa. Pembicara dari profesional bidangnya masing-masing.
+                    </div>
+                    <a href="javascript:void(0)" class="event-button">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+
+        <h2>📝 Informasi Penting</h2>
+        <div style="background-color: #f5f5f5; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff6b00;">
+            <p style="margin-bottom: 1rem;">
+                <strong style="color: #ff6b00;">📌 Perhatian:</strong> Untuk informasi lebih lanjut tentang setiap event, silakan hubungi panitia penyelenggara atau kunjungi halaman detail event.
+            </p>
+            <p>
+                <strong style="color: #ff6b00;">🎟️ Pendaftaran:</strong> Beberapa event memerlukan pendaftaran terlebih dahulu. Silakan isi form pendaftaran yang tersedia di halaman detail event.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2025 <strong>StageIn</strong> - Platform Event & Production Sekolah</p>
+        <p>Untuk pertanyaan, hubungi panitia atau akses <a href="../index.html#faq" style="color: #ff6b00; text-decoration: none;">FAQ kami</a></p>
+    </footer>
+</body>
+</html>
