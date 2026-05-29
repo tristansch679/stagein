@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Panitia - StageIn</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        .navbar {
+            background-color: #000000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b00;
+        }
+
+        .logout-btn {
+            background-color: #ff6b00;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #e55a00;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .greeting {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .greeting p {
+            color: #cccccc;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ff6b00;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666666;
+            font-size: 0.95rem;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            color: #000000;
+        }
+
+        .event-list {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .event-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-item:hover {
+            background-color: #f9f9f9;
+            padding-left: 2rem;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-info h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #000000;
+            margin-bottom: 0.3rem;
+        }
+
+        .event-info p {
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        .event-status {
+            background-color: #ff6b00;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .event-status.completed {
+            background-color: #4caf50;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #cccccc;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .event-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .event-status {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-logo">StageIn</div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="container">
+        <div class="greeting">
+            <h1>Selamat Datang, Panitia! 👋</h1>
+            <p>Kelola semua event dan koordinasi tim Anda dari sini</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Total Event</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Event Aktif</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Total Divisi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">45</div>
+                <div class="stat-label">Anggota Panitia</div>
+            </div>
+        </div>
+
+        <h2>📅 Daftar Event</h2>
+        <div class="event-list">
+            <div class="event-item">
+                <div class="event-info">
+                    <h3>Pentas Seni 2025</h3>
+                    <p>📆 15 Juni 2025 | 🕕 19:00 WIB</p>
+                </div>
+                <div class="event-status">Aktif</div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-info">
+                    <h3>Pameran Seni Rupa</h3>
+                    <p>📆 20 Juni 2025 | 🕖 08:00 WIB</p>
+                </div>
+                <div class="event-status">Aktif</div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-info">
+                    <h3>Kompetisi Olahraga</h3>
+                    <p>📆 25 Juni 2025 | 🕖 07:00 WIB</p>
+                </div>
+                <div class="event-status">Aktif</div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-info">
+                    <h3>Festival Kuliner</h3>
+                    <p>📆 28 Juni 2025 | 🕙 10:00 WIB</p>
+                </div>
+                <div class="event-status">Aktif</div>
+            </div>
+
+            <div class="event-item">
+                <div class="event-info">
+                    <h3>Konser Musik</h3>
+                    <p>📆 02 Juli 2025 | 🕕 18:00 WIB</p>
+                </div>
+                <div class="event-status completed">Selesai</div>
+            </div>
+        </div>
+
+        <h2>📋 Menu Fitur</h2>
+        <div class="event-list">
+            <div class="event-item" style="justify-content: flex-start;">
+                <div style="flex: 1;">
+                    <h3>Manajemen Divisi</h3>
+                    <p>Kelola pembagian tugas dan anggota divisi</p>
+                </div>
+                <button onclick="alert('Fitur akan segera tersedia')" style="background-color: #ff6b00; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 600;">Akses</button>
+            </div>
+            <div class="event-item" style="justify-content: flex-start;">
+                <div style="flex: 1;">
+                    <h3>Notulen & Evaluasi</h3>
+                    <p>Catat hasil meeting dan evaluasi event</p>
+                </div>
+                <button onclick="alert('Fitur akan segera tersedia')" style="background-color: #ff6b00; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 600;">Akses</button>
+            </div>
+            <div class="event-item" style="justify-content: flex-start;">
+                <div style="flex: 1;">
+                    <h3>Jadwal & To-Do List</h3>
+                    <p>Atur jadwal meeting dan daftar tugas</p>
+                </div>
+                <button onclick="alert('Fitur akan segera tersedia')" style="background-color: #ff6b00; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 600;">Akses</button>
+            </div>
+            <div class="event-item" style="justify-content: flex-start;">
+                <div style="flex: 1;">
+                    <h3>Pengumuman</h3>
+                    <p>Buat dan kelola pengumuman untuk panitia</p>
+                </div>
+                <button onclick="alert('Fitur akan segera tersedia')" style="background-color: #ff6b00; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 600;">Akses</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 <strong>StageIn</strong> - Platform Event & Production Sekolah</p>
+        <p>Dashboard Panitia - Area Terbatas</p>
+    </footer>
+
+    <script>
+        function logout() {
+            if (confirm('Apakah Anda yakin ingin logout?')) {
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -24,7 +24,6 @@
             background-color: #ffffff;
         }
 
-        /* ===== NAVBAR ===== */
         nav {
             position: fixed;
             top: 0;
@@ -59,7 +58,6 @@
             color: #ff6b00;
         }
 
-        /* ===== CONTAINER ===== */
         .container {
             margin-top: 100px;
             padding: 2rem;
@@ -83,7 +81,6 @@
             margin: 2rem 0 1rem 0;
         }
 
-        /* ===== DOCUMENTATION GRID ===== */
         .doc-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -124,19 +121,13 @@
             line-height: 1.6;
         }
 
-        .doc-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
         .doc-link {
             display: inline-block;
             color: #ff6b00;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            padding: 0.5rem 0;
+            margin-top: 0.5rem;
         }
 
         .doc-link:hover {
@@ -144,11 +135,6 @@
             transform: translateX(5px);
         }
 
-        .doc-link::before {
-            content: "→ ";
-        }
-
-        /* ===== GDRIVE SECTION ===== */
         .gdrive-section {
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
             color: #ffffff;
@@ -160,11 +146,6 @@
         .gdrive-section h2 {
             color: #ff6b00;
             margin-top: 0;
-        }
-
-        .gdrive-section p {
-            color: #cccccc;
-            margin-bottom: 1rem;
         }
 
         .gdrive-button {
@@ -184,7 +165,6 @@
             box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
         }
 
-        /* ===== FOOTER ===== */
         footer {
             background-color: #1a1a1a;
             color: #cccccc;
@@ -195,7 +175,6 @@
             margin-top: 3rem;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 margin-top: 80px;
@@ -206,10 +185,6 @@
                 font-size: 1.8rem;
             }
 
-            h2 {
-                font-size: 1.3rem;
-            }
-
             .doc-grid {
                 grid-template-columns: 1fr;
             }
@@ -217,117 +192,70 @@
     </style>
 </head>
 <body>
-    <!-- ===== NAVBAR ===== -->
     <nav>
         <a href="../index.html" class="back-button">← Kembali</a>
         <a href="../index.html" class="navbar-logo">StageIn</a>
         <div style="width: 100px;"></div>
     </nav>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <div class="container">
         <h1>📁 Dokumentasi Event</h1>
 
-        <!-- Google Drive Section -->
         <div class="gdrive-section">
             <h2>☁️ Penyimpanan Cloud - Google Drive</h2>
-            <p>Semua dokumentasi event disimpan di Google Drive untuk akses unlimited dan mudah dibagikan. Klik tombol di bawah untuk membuka folder dokumentasi.</p>
+            <p>Semua dokumentasi event disimpan di Google Drive untuk akses unlimited dan mudah dibagikan.</p>
             <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="gdrive-button">📂 Buka Google Drive</a>
         </div>
 
         <h2>📸 Dokumentasi Per Event</h2>
 
         <div class="doc-grid">
-            <!-- Event 1 Documentation -->
             <div class="doc-card">
                 <div class="doc-icon">🎭</div>
                 <h3>Pentas Seni 2025</h3>
                 <p>Koleksi foto dan video dari acara pentas seni yang menampilkan berbagai pertunjukan seni siswa.</p>
-                <div class="doc-links">
-                    <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">Buka Folder</a>
-                    <a href="https://drive.google.com/file/d/1example/view" target="_blank" class="doc-link">Lihat Video</a>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">→ Buka Folder</a>
             </div>
 
-            <!-- Event 2 Documentation -->
             <div class="doc-card">
                 <div class="doc-icon">🎨</div>
                 <h3>Pameran Seni Rupa</h3>
                 <p>Dokumentasi lengkap karya seni siswa dari berbagai medium termasuk lukisan, patung, dan instalasi.</p>
-                <div class="doc-links">
-                    <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">Buka Folder</a>
-                    <a href="https://drive.google.com/file/d/1example/view" target="_blank" class="doc-link">Lihat Galeri</a>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">→ Buka Folder</a>
             </div>
 
-            <!-- Event 3 Documentation -->
             <div class="doc-card">
                 <div class="doc-icon">⚽</div>
                 <h3>Kompetisi Olahraga</h3>
                 <p>Foto dan video dari berbagai cabang olahraga yang ditampilkan dalam kompetisi antar kelas.</p>
-                <div class="doc-links">
-                    <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">Buka Folder</a>
-                    <a href="https://drive.google.com/file/d/1example/view" target="_blank" class="doc-link">Lihat Highlights</a>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">→ Buka Folder</a>
             </div>
 
-            <!-- Event 4 Documentation -->
             <div class="doc-card">
                 <div class="doc-icon">🍜</div>
                 <h3>Festival Kuliner</h3>
                 <p>Dokumentasi makanan dan suasana dari festival kuliner yang menampilkan cita rasa nusantara.</p>
-                <div class="doc-links">
-                    <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">Buka Folder</a>
-                    <a href="https://drive.google.com/file/d/1example/view" target="_blank" class="doc-link">Lihat Foto Menu</a>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">→ Buka Folder</a>
             </div>
 
-            <!-- Event 5 Documentation -->
             <div class="doc-card">
                 <div class="doc-icon">🎵</div>
                 <h3>Konser Musik</h3>
                 <p>Video penampilan dari berbagai band siswa dan alumni dalam konser musik spektakuler.</p>
-                <div class="doc-links">
-                    <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">Buka Folder</a>
-                    <a href="https://drive.google.com/file/d/1example/view" target="_blank" class="doc-link">Lihat Rekaman</a>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">→ Buka Folder</a>
             </div>
 
-            <!-- Event 6 Documentation -->
             <div class="doc-card">
                 <div class="doc-icon">📚</div>
                 <h3>Workshop & Seminar</h3>
                 <p>Materi pembelajaran, slide presentasi, dan dokumentasi dari berbagai workshop yang diselenggarakan.</p>
-                <div class="doc-links">
-                    <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">Buka Folder</a>
-                    <a href="https://drive.google.com/file/d/1example/view" target="_blank" class="doc-link">Lihat Materi</a>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1example" target="_blank" class="doc-link">→ Buka Folder</a>
             </div>
-        </div>
-
-        <h2>📝 Panduan Menggunakan Dokumentasi</h2>
-        <div style="background-color: #f5f5f5; padding: 2rem; border-radius: 8px; border-left: 4px solid #ff6b00;">
-            <ol style="color: #666666; line-height: 2;">
-                <li><strong style="color: #ff6b00;">Akses Folder:</strong> Klik tombol "Buka Folder" atau "Buka Google Drive" untuk mengakses file dokumentasi secara langsung.</li>
-                <li><strong style="color: #ff6b00;">Download File:</strong> Anda dapat mendownload file foto atau video langsung dari Google Drive dengan klik kanan → Download.</li>
-                <li><strong style="color: #ff6b00;">Bagikan Link:</strong> Klik tombol share di Google Drive untuk membagikan dokumentasi dengan teman atau keluarga.</li>
-                <li><strong style="color: #ff6b00;">Kualitas:</strong> Semua file disimpan dalam kualitas tinggi untuk hasil terbaik saat dicetak atau ditampilkan.</li>
-                <li><strong style="color: #ff6b00;">Update Berkala:</strong> Dokumentasi diupdate setiap hari setelah event berakhir.</li>
-            </ol>
-        </div>
-
-        <h2>❓ Pertanyaan Tentang Dokumentasi?</h2>
-        <div style="background-color: #ffe6d5; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-            <p style="color: #ff6b00; margin-bottom: 0.5rem;"><strong>📞 Hubungi Panitia Dokumentasi:</strong></p>
-            <p style="color: #666666;">Email: dokumentasi@stagein.sch.id</p>
-            <p style="color: #666666;">Instagram: @stagein.doc</p>
         </div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
         <p>&copy; 2025 <strong>StageIn</strong> - Platform Event & Production Sekolah</p>
-        <p>Untuk pertanyaan, hubungi panitia atau akses <a href="../index.html#faq" style="color: #ff6b00; text-decoration: none;">FAQ kami</a></p>
     </footer>
 </body>
 </html>
