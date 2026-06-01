@@ -45,6 +45,11 @@
             font-weight: 700;
             color: #ff6b00;
             letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .navbar-logo:hover {
+            color: #e55a00;
         }
 
         .navbar-menu {
@@ -101,6 +106,13 @@
             line-height: 1.8;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .cta-button {
             display: inline-block;
             background-color: #ff6b00;
@@ -122,6 +134,17 @@
             background-color: #e55a00;
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+        }
+
+        .cta-button-secondary {
+            background-color: transparent;
+            border: 2px solid #ff6b00;
+            color: #ff6b00;
+        }
+
+        .cta-button-secondary:hover {
+            background-color: #ff6b00;
+            color: #ffffff;
         }
 
         /* ===== LAYANAN SECTION ===== */
@@ -163,6 +186,7 @@
             border-radius: 4px;
             transition: all 0.3s ease;
             border-top: 4px solid #000000;
+            cursor: pointer;
         }
 
         .layanan-card:hover {
@@ -199,10 +223,75 @@
             color: #666666;
             line-height: 1.8;
             font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
 
         .layanan-card:hover p {
             color: #cccccc;
+        }
+
+        .layanan-card-link {
+            display: inline-block;
+            color: #ff6b00;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .layanan-card:hover .layanan-card-link {
+            color: #ffffff;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        #faq {
+            padding: 6rem 2rem;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        #faq h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000000;
+            letter-spacing: 1px;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #ff6b00;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .faq-item h3 {
+            color: #ff6b00;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            color: #666666;
+        }
+
+        .faq-button-container {
+            text-align: center;
+            margin-top: 2rem;
         }
 
         /* ===== TENTANG KAMI SECTION ===== */
@@ -263,11 +352,31 @@
             justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
         .founder-list li {
             font-weight: 500;
             color: #ffffff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #ff6b00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            transform: scale(1.1);
         }
 
         /* ===== FOOTER ===== */
@@ -290,10 +399,131 @@
             margin-top: 0.5rem;
         }
 
+        /* ===== MODAL/DIALOG ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 4px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666666;
+        }
+
+        .modal-close:hover {
+            color: #ff6b00;
+        }
+
+        .modal h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff6b00;
+            box-shadow: 0 0 5px rgba(255, 107, 0, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .btn-cancel {
+            background-color: #e0e0e0;
+            color: #000000;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background-color: #cccccc;
+        }
+
+        .btn-submit {
+            background-color: #ff6b00;
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #e55a00;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             nav {
                 padding: 1rem;
+                flex-wrap: wrap;
             }
 
             .navbar-logo {
@@ -313,8 +543,13 @@
                 font-size: 1rem;
             }
 
+            .hero-buttons {
+                flex-direction: column;
+            }
+
             #layanan h2,
-            #tentang h2 {
+            #tentang h2,
+            #faq h2 {
                 font-size: 2rem;
             }
 
@@ -337,8 +572,17 @@
             }
 
             #layanan,
-            #tentang {
+            #tentang,
+            #faq {
                 padding: 4rem 1rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
             }
         }
 
@@ -363,7 +607,8 @@
             }
 
             #layanan h2,
-            #tentang h2 {
+            #tentang h2,
+            #faq h2 {
                 font-size: 1.6rem;
             }
 
@@ -379,10 +624,6 @@
                 font-size: 2.5rem;
             }
 
-            #tentang h2 {
-                margin-bottom: 2rem;
-            }
-
             .founder-list li {
                 font-size: 0.9rem;
             }
@@ -392,10 +633,11 @@
 <body>
     <!-- ===== NAVBAR ===== -->
     <nav>
-        <div class="navbar-logo">StageIn</div>
+        <a href="#beranda" class="navbar-logo">StageIn</a>
         <ul class="navbar-menu">
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#tentang">Tentang Kami</a></li>
         </ul>
     </nav>
@@ -405,7 +647,10 @@
         <div class="hero-content">
             <h1>Stage<span>In</span></h1>
             <p>Platform lengkap untuk mengelola event dan production sekolah Anda dengan mudah, profesional, dan terpadu.</p>
-            <a href="#layanan" class="cta-button">Jelajahi Layanan</a>
+            <div class="hero-buttons">
+                <a href="#layanan" class="cta-button">Jelajahi Layanan</a>
+                <button onclick="openLoginModal()" class="cta-button cta-button-secondary">Masuk Panitia</button>
+            </div>
         </div>
     </section>
 
@@ -417,21 +662,66 @@
         <div class="layanan-container">
             <article class="layanan-card">
                 <div class="layanan-icon">🎭</div>
-                <h3>Pentas Seni</h3>
+                <h3>Event Sekolah</h3>
                 <p>Kelola jadwal, informasi event, dan dokumentasi pertunjukan seni sekolah dengan sistem yang terorganisir dan mudah diakses oleh publik maupun panitia.</p>
+                <a href="pages/events.html" class="layanan-card-link">Lihat Event →</a>
             </article>
 
             <article class="layanan-card">
                 <div class="layanan-icon">📸</div>
                 <h3>Dokumentasi</h3>
                 <p>Pusat penyimpanan semua dokumentasi event berupa foto, video, dan file penting. Akses mudah dengan integrasi Google Drive untuk kapasitas unlimited.</p>
+                <a href="pages/dokumentasi.html" class="layanan-card-link">Buka Dokumentasi →</a>
             </article>
 
             <article class="layanan-card">
                 <div class="layanan-icon">✨</div>
-                <h3>Dekorasi & Desain</h3>
+                <h3>Dashboard Panitia</h3>
                 <p>Koordinasi tim dekorasi, manajemen divisi, dan tracking progress production dengan dashboard khusus untuk panitia dan ketua divisi.</p>
+                <button onclick="openLoginModal()" class="layanan-card-link" style="background: none; border: none; cursor: pointer; font-size: inherit;">Akses Panitia →</button>
             </article>
+        </div>
+    </section>
+
+    <!-- ===== SECTION FAQ ===== -->
+    <section id="faq">
+        <h2>Pertanyaan Umum</h2>
+        <div class="section-subtitle">Jawaban untuk Pertanyaan Anda</div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>❓ Apa itu StageIn?</h3>
+                <p>StageIn adalah platform digital terpadu untuk mengelola event dan production kegiatan sekolah dengan mudah dan profesional.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>🔐 Siapa yang bisa mengakses panitia?</h3>
+                <p>Hanya panitia yang terdaftar dengan username dan password yang dapat mengakses dashboard panitia.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>💬 Bagaimana cara mengajukan komplain?</h3>
+                <p>Anda dapat mengajukan komplain atau saran melalui form FAQ di bagian bawah atau hubungi panitia langsung.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>💰 Apakah ada biaya untuk menggunakan platform ini?</h3>
+                <p>Tidak, StageIn gratis digunakan untuk semua siswa dan panitia sekolah.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>📱 Apakah StageIn bisa diakses dari mobile?</h3>
+                <p>Ya, website StageIn fully responsive dan dapat diakses dari smartphone maupun tablet dengan lancar.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>🗂️ Di mana saya bisa melihat dokumentasi event?</h3>
+                <p>Semua dokumentasi event tersimpan di halaman Dokumentasi dengan link Google Drive untuk akses unlimited.</p>
+            </div>
+
+            <div class="faq-button-container">
+                <button onclick="openFeedbackModal()" class="cta-button">Ajukan Pertanyaan / Komplain</button>
+            </div>
         </div>
     </section>
 
@@ -452,9 +742,15 @@
             <div class="founder-section">
                 <h3>Dikembangkan oleh</h3>
                 <ul class="founder-list">
-                    <li>Tristan Sch</li>
-                    <li>Tim Development</li>
+                    <li>👤 Tristan Sch</li>
+                    <li>👥 Tim Development</li>
                 </ul>
+                
+                <div class="social-links">
+                    <a href="#">📱 Instagram</a>
+                    <a href="#">🎵 TikTok</a>
+                    <a href="#">🎬 YouTube</a>
+                </div>
             </div>
         </div>
     </section>
@@ -464,5 +760,131 @@
         <p>&copy; 2025 <strong>StageIn</strong> - Platform Event & Production Sekolah</p>
         <p class="footer-credit">Dibuat dengan dedikasi untuk memudahkan pengelolaan event sekolah Anda</p>
     </footer>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">✕</button>
+            <h2>Login Panitia</h2>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Masukkan username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Masukkan password" required>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeLoginModal()">Batal</button>
+                    <button type="submit" class="btn-submit">Masuk</button>
+                </div>
+            </form>
+            
+            <p style="text-align: center; margin-top: 1rem; color: #888888; font-size: 0.9rem;">Demo: username <strong>panitia</strong> | password <strong>12345</strong></p>
+        </div>
+    </div>
+
+    <!-- ===== FEEDBACK MODAL ===== -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeFeedbackModal()">✕</button>
+            <h2>Ajukan Pertanyaan / Komplain</h2>
+            
+            <form onsubmit="handleFeedback(event)">
+                <div class="form-group">
+                    <label for="feedbackName">Nama</label>
+                    <input type="text" id="feedbackName" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackEmail">Email</label>
+                    <input type="email" id="feedbackEmail" placeholder="Masukkan email Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackType">Tipe</label>
+                    <select id="feedbackType" required>
+                        <option value="pertanyaan">Pertanyaan</option>
+                        <option value="komplain">Komplain</option>
+                        <option value="saran">Saran</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackMessage">Pesan</label>
+                    <textarea id="feedbackMessage" placeholder="Tuliskan pertanyaan atau komplain Anda..." required></textarea>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeFeedbackModal()">Batal</button>
+                    <button type="submit" class="btn-submit">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Login Modal
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'panitia' && password === '12345') {
+                alert('✅ Login berhasil! Mengarahkan ke dashboard panitia...');
+                window.location.href = 'pages/panitia-dashboard.html';
+            } else {
+                alert('❌ Username atau password salah\n\nCoba: panitia / 12345');
+            }
+        }
+
+        // Feedback Modal
+        function openFeedbackModal() {
+            document.getElementById('feedbackModal').classList.add('active');
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedbackModal').classList.remove('active');
+        }
+
+        function handleFeedback(event) {
+            event.preventDefault();
+            const name = document.getElementById('feedbackName').value;
+            const email = document.getElementById('feedbackEmail').value;
+            const type = document.getElementById('feedbackType').value;
+            const message = document.getElementById('feedbackMessage').value;
+            
+            alert(`✅ ${type.charAt(0).toUpperCase() + type.slice(1)} Anda telah dikirim!\n\nTerima kasih ${name}, kami akan memproses ${type} Anda segera.`);
+            
+            document.getElementById('feedbackMessage').value = '';
+            document.getElementById('feedbackName').value = '';
+            document.getElementById('feedbackEmail').value = '';
+            closeFeedbackModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const feedbackModal = document.getElementById('feedbackModal');
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            if (event.target === feedbackModal) {
+                closeFeedbackModal();
+            }
+        }
+    </script>
 </body>
 </html>
