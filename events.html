@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Sekolah - StageIn</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b00;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .navbar-menu a:hover {
+            color: #ff6b00;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .events-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .events-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #000000;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #ff6b00;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 250px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b00;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b00 0%, #e55a00 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ffffff;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: #ff6b00;
+            color: #ffffff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .event-content h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: #000000;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .event-content p {
+            color: #666666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .event-location {
+            color: #ff6b00;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .btn-lihat {
+            background-color: #ff6b00;
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-lihat:hover {
+            background-color: #e55a00;
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666666;
+        }
+
+        .empty-state h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #1a1a1a;
+            color: #cccccc;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #333333;
+            font-size: 0.95rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-credit {
+            color: #888888;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 4px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            margin: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666666;
+        }
+
+        .modal-close:hover {
+            color: #ff6b00;
+        }
+
+        .modal h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body {
+            color: #666666;
+        }
+
+        .modal-body h3 {
+            color: #ff6b00;
+            margin: 1rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        .modal-body p {
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .btn-close {
+            background-color: #e0e0e0;
+            color: #000000;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close:hover {
+            background-color: #cccccc;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .navbar-logo {
+                font-size: 1.4rem;
+            }
+
+            .navbar-menu {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .events-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .events-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card {
+                margin-bottom: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .events-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <a href="index.html" class="navbar-logo">StageIn</a>
+        <ul class="navbar-menu">
+            <li><a href="index.html#beranda">Beranda</a></li>
+            <li><a href="index.html#layanan">Layanan</a></li>
+            <li><a href="events.html">Event Sekolah</a></li>
+            <li><a href="dokumentasi.html">Dokumentasi</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <h1>🎭 Event Sekolah</h1>
+        <p>Jelajahi semua event dan acara yang diselenggarakan oleh sekolah</p>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <div class="events-header">
+            <h2>Daftar Event</h2>
+            <input type="text" class="search-box" id="searchBox" placeholder="Cari event...">
+        </div>
+
+        <div class="events-container" id="eventsContainer">
+            <!-- Event cards akan di-generate dari JavaScript -->
+        </div>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <h3>📭 Event tidak ditemukan</h3>
+            <p>Coba gunakan kata kunci yang berbeda</p>
+        </div>
+    </main>
+
+    <!-- ===== EVENT DETAIL MODAL ===== -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeEventModal()">✕</button>
+            <div id="eventDetails"></div>
+            <div class="modal-buttons">
+                <button class="btn-close" onclick="closeEventModal()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2025 <strong>StageIn</strong> - Platform Event & Production Sekolah</p>
+        <p class="footer-credit">Dibuat dengan dedikasi untuk memudahkan pengelolaan event sekolah Anda</p>
+    </footer>
+
+    <script>
+        // Data Event
+        const events = [
+            {
+                id: 1,
+                title: "Pentas Seni 2025",
+                date: "15 Juni 2025",
+                icon: "🎭",
+                location: "Aula Utama",
+                deskripsi: "Pertunjukan seni yang menampilkan talent-talent terbaik dari berbagai divisi seni di sekolah kami.",
+                peserta: "500+ penonton",
+                durasi: "3 jam"
+            },
+            {
+                id: 2,
+                title: "Festival Musik",
+                date: "22 Juni 2025",
+                icon: "🎵",
+                location: "Halaman Sekolah",
+                deskripsi: "Festival musik tahunan yang menampilkan berbagai genre musik dari sekolah dan sekolah lain.",
+                peserta: "1000+ penonton",
+                durasi: "5 jam"
+            },
+            {
+                id: 3,
+                title: "Pameran Seni Rupa",
+                date: "10 Juni 2025",
+                icon: "🎨",
+                location: "Ruang Galeri",
+                deskripsi: "Pameran karya seni rupa siswa mencakup lukisan, patung, dan seni digital.",
+                peserta: "200+ pengunjung",
+                durasi: "1 minggu"
+            },
+            {
+                id: 4,
+                title: "Konser Jazz",
+                date: "29 Juni 2025",
+                icon: "🎺",
+                location: "Aula Utama",
+                deskripsi: "Pertunjukan jazz eksklusif dengan kolaborasi musisi profesional dari luar sekolah.",
+                peserta: "300+ penonton",
+                durasi: "2 jam"
+            },
+            {
+                id: 5,
+                title: "Dance Competition",
+                date: "8 Juli 2025",
+                icon: "💃",
+                location: "Aula Utama",
+                deskripsi: "Kompetisi tari dengan berbagai kategori dari tari modern hingga tradisional.",
+                peserta: "400+ penonton",
+                durasi: "4 jam"
+            },
+            {
+                id: 6,
+                title: "Fashion Show",
+                date: "12 Juli 2025",
+                icon: "👗",
+                location: "Halaman Sekolah",
+                deskripsi: "Pameran fashion yang menampilkan desain kreatif dari siswa dan desainer lokal.",
+                peserta: "600+ penonton",
+                durasi: "2.5 jam"
+            }
+        ];
+
+        // Render Events
+        function renderEvents(eventsToShow) {
+            const container = document.getElementById('eventsContainer');
+            const emptyState = document.getElementById('emptyState');
+
+            if (eventsToShow.length === 0) {
+                container.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            container.innerHTML = eventsToShow.map(event => `
+                <div class="event-card">
+                    <div class="event-image">${event.icon}</div>
+                    <div class="event-content">
+                        <div class="event-date">📅 ${event.date}</div>
+                        <h3>${event.title}</h3>
+                        <p>${event.deskripsi.substring(0, 80)}...</p>
+                        <div class="event-footer">
+                            <span class="event-location">📍 ${event.location}</span>
+                            <button class="btn-lihat" onclick="openEventModal(${event.id})">Lihat Detail</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open Event Modal
+        function openEventModal(eventId) {
+            const event = events.find(e => e.id === eventId);
+            if (!event) return;
+
+            const detailsHtml = `
+                <h2>${event.icon} ${event.title}</h2>
+                <div class="modal-body">
+                    <h3>📅 Tanggal & Waktu</h3>
+                    <p>${event.date}</p>
+                    
+                    <h3>📍 Lokasi</h3>
+                    <p>${event.location}</p>
+                    
+                    <h3>📝 Deskripsi</h3>
+                    <p>${event.deskripsi}</p>
+                    
+                    <h3>👥 Peserta</h3>
+                    <p>${event.peserta}</p>
+                    
+                    <h3>⏱️ Durasi</h3>
+                    <p>${event.durasi}</p>
+                </div>
+            `;
+
+            document.getElementById('eventDetails').innerHTML = detailsHtml;
+            document.getElementById('eventModal').classList.add('active');
+        }
+
+        // Close Event Modal
+        function closeEventModal() {
+            document.getElementById('eventModal').classList.remove('active');
+        }
+
+        // Search Function
+        document.getElementById('searchBox').addEventListener('keyup', function() {
+            const query = this.value.toLowerCase();
+            const filtered = events.filter(event => 
+                event.title.toLowerCase().includes(query) ||
+                event.deskripsi.toLowerCase().includes(query) ||
+                event.location.toLowerCase().includes(query)
+            );
+            renderEvents(filtered);
+        });
+
+        // Initial Render
+        renderEvents(events);
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('eventModal');
+            if (event.target === modal) {
+                closeEventModal();
+            }
+        }
+    </script>
+</body>
+</html>
