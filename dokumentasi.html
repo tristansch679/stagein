@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentasi - StageIn</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b00;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .navbar-menu a:hover {
+            color: #ff6b00;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        main h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #000000;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .gdrive-banner {
+            background: linear-gradient(135deg, #ff6b00 0%, #e55a00 100%);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+
+        .gdrive-banner h2 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .gdrive-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-gdrive {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #ff6b00;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-gdrive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .doc-card {
+            background-color: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .doc-card:hover {
+            border-color: #ff6b00;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .doc-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .doc-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: #000000;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-card p {
+            color: #666666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .doc-link {
+            display: inline-block;
+            color: #ffffff;
+            background-color: #ff6b00;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .doc-link:hover {
+            background-color: #e55a00;
+            transform: translateY(-2px);
+        }
+
+        .stats-section {
+            background-color: #f5f5f5;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            margin: 4rem 0;
+        }
+
+        .stats-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            border-left: 4px solid #ff6b00;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666666;
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #1a1a1a;
+            color: #cccccc;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #333333;
+            font-size: 0.95rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-credit {
+            color: #888888;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .navbar-logo {
+                font-size: 1.4rem;
+            }
+
+            .navbar-menu {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+
+            .gdrive-banner {
+                padding: 2rem 1rem;
+            }
+
+            .doc-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            main h2 {
+                font-size: 1.5rem;
+            }
+
+            .doc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-card {
+                padding: 1.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <a href="index.html" class="navbar-logo">StageIn</a>
+        <ul class="navbar-menu">
+            <li><a href="index.html#beranda">Beranda</a></li>
+            <li><a href="index.html#layanan">Layanan</a></li>
+            <li><a href="events.html">Event Sekolah</a></li>
+            <li><a href="dokumentasi.html">Dokumentasi</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <h1>📁 Dokumentasi Event</h1>
+        <p>Koleksi lengkap foto, video, dan materi dari semua event sekolah</p>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+        <!-- Google Drive Banner -->
+        <div class="gdrive-banner">
+            <h2>☁️ Penyimpanan Cloud - Google Drive</h2>
+            <p>Semua dokumentasi event disimpan secara terpusat di Google Drive dengan akses unlimited untuk semua pihak.</p>
+            <a href="https://drive.google.com/drive/folders/1example-stagein" target="_blank" class="btn-gdrive">📂 Buka Google Drive</a>
+        </div>
+
+        <h2>📸 Dokumentasi Per Event</h2>
+
+        <div class="doc-grid">
+            <div class="doc-card">
+                <div class="doc-icon">🎭</div>
+                <h3>Pentas Seni 2025</h3>
+                <p>Koleksi foto profesional dan video rekaman dari pertunjukan seni yang spektakuler dengan berbagai penampilan seni.</p>
+                <a href="https://drive.google.com/drive/folders/1example-pentas" target="_blank" class="doc-link">📂 Lihat Folder</a>
+            </div>
+
+            <div class="doc-card">
+                <div class="doc-icon">🎵</div>
+                <h3>Festival Musik</h3>
+                <p>Dokumentasi lengkap festival musik dengan video penampilan setiap artis dan foto-foto behind the scenes.</p>
+                <a href="https://drive.google.com/drive/folders/1example-musik" target="_blank" class="doc-link">📂 Lihat Folder</a>
+            </div>
+
+            <div class="doc-card">
+                <div class="doc-icon">🎨</div>
+                <h3>Pameran Seni Rupa</h3>
+                <p>Dokumentasi visual dari semua karya seni rupa siswa termasuk lukisan, patung, dan instalasi seni digital.</p>
+                <a href="https://drive.google.com/drive/folders/1example-seni" target="_blank" class="doc-link">📂 Lihat Folder</a>
+            </div>
+
+            <div class="doc-card">
+                <div class="doc-icon">🎺</div>
+                <h3>Konser Jazz</h3>
+                <p>Rekaman audio berkualitas tinggi dan video HD dari konser jazz eksklusif dengan musisi profesional.</p>
+                <a href="https://drive.google.com/drive/folders/1example-jazz" target="_blank" class="doc-link">📂 Lihat Folder</a>
+            </div>
+
+            <div class="doc-card">
+                <div class="doc-icon">💃</div>
+                <h3>Dance Competition</h3>
+                <p>Video lengkap setiap pertunjukan tari dari berbagai kategori dengan foto-foto high resolution.</p>
+                <a href="https://drive.google.com/drive/folders/1example-dance" target="_blank" class="doc-link">📂 Lihat Folder</a>
+            </div>
+
+            <div class="doc-card">
+                <div class="doc-icon">👗</div>
+                <h3>Fashion Show</h3>
+                <p>Dokumentasi fashion show dengan video runway dan foto detail dari setiap desain kreasi siswa.</p>
+                <a href="https://drive.google.com/drive/folders/1example-fashion" target="_blank" class="doc-link">📂 Lihat Folder</a>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <h2>📊 Statistik Dokumentasi</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">2.5K</div>
+                    <div class="stat-label">Total Foto</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Video HD</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Event Terdokumentasi</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Kapasitas Cloud</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2025 <strong>StageIn</strong> - Platform Event & Production Sekolah</p>
+        <p class="footer-credit">Dokumentasi Terpusat untuk Semua Event Sekolah</p>
+    </footer>
+</body>
+</html>
